@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+
+    
+    <script>
+        debugger
+
+        // Selection of Mathametical Operation
+        alert("Choose your preferred Mathamatical Operation");
+        let operation = prompt("Type in the number for the desired operation \n  \n1 for + (Addition) \n2 for - (Subtraction) \n3 for / (Division) \n4 for x (Multiplication)", 0);
+
+        // Conversion of Selection from String to Number
+        operation = Number(operation);
+
+        // Validating Selection Input
+        let option = false;
+        if(operation >= 1 && operation <= 4){
+            option = true;
+        } else {
+            alert("Please ENTER an INTEGER between 1 and 4 for the corresponding mathematical operation");
+            location.reload();
+        }
+
+        if(option){
+
+            // Just for readability and understanding of proccess
+            let sign; 
+            if(operation == 1){
+                sign = "add to";
+                operation = '+';
+            } 
+            else if (operation == 2) {
+                sign = "minus from";
+                operation = '-';
+            } 
+            else if(operation == 3){
+                sign = "divide into";
+                operation = '/';
+            } 
+            else if(operation == 4 ){
+                sign = "multiply by";
+                operation = '*';
+            }
+
+
+            // first_number input validation
+
+            let first_number;
+
+            loop_num1:
+            for(let i = 0; i >= 0; i++){ 
+
+                first_number = prompt("Please Enter a Number", 0);
+
+                if(first_number == ""){
+                    continue loop_num1;
+                }
+
+                first_number = Number(first_number);
+                if (isNaN(first_number)){
+                    alert("INVALID INPUT!");
+                    continue loop_num1;
+                } else { 
+                    break;
+                } 
+                
+            }
+
+            debugger
+            // second_number input validation 
+
+            let second_number;
+
+            loop_num2:
+                for(let j = 0; j >= 0;j++){
+                second_number = prompt(`Please Enter another Number to ${sign} your first Number of ${first_number} `, 0);
+
+                if(second_number == ""){
+                    continue loop_num2;
+                }
+                second_number = Number(second_number);
+                if (isNaN(second_number)){
+                    alert("INVALID INPUT!");
+                    continue loop_num2;
+                } else { 
+                    break;
+                }
+            }
+
+            // Preping for Eval Function
+            let string_eq = `${first_number} ${operation} ${second_number}`;
+            alert(`Evaluating ${string_eq} in progress........`);
+
+            //  Actual Operation and Answer
+            let Final = eval(string_eq);
+            alert(`Your Answer to ${string_eq} = ${Final}`);                
+        
+        }    
+
+    </script>
+
+</body>
+</html>
